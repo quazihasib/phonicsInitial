@@ -309,6 +309,168 @@ public class MainActivity extends SimpleBaseGameActivity implements IScrollDetec
 		mScene.attachChild(maImage);
 		maImage.setVisible(false);
 		
+		
+		mSceneHandler =  new TimerHandler((float)0.09, true, new ITimerCallback()
+		{
+					@Override
+					public void onTimePassed(TimerHandler pTimerHandler) 
+					{
+						// TODO Auto-generated method stub
+						
+						//Checking which letters are in the scene and their position
+//						for(int i=0; i<6; i++)
+//						{
+//								
+//							if(mo[i] != null)
+//							{
+//								Debug.d("mo are:"+i);
+//								Debug.d("mo.x:"+mo[i].getX());
+//								
+//								for(int j=0; j<6; j++)
+//								{
+//									if(akar[j]!= null)
+//									{
+//										BlockPositionCheck.akarMoPositionCheck(i,j);
+//									}
+//								}
+//								
+//							}
+//							
+//							if(akar[i]!= null)
+//							{
+//								//BlockPositionCheck.akarMoPositionCheck(i,j);
+//								Debug.d("akar are:"+i);
+//								Debug.d("akar.x:"+akar[i].getX());
+//							}
+//							
+//							if(lo[i]!= null)
+//							{
+//								//BlockPositionCheck.akarMoPositionCheck(i,j);
+//								Debug.d("lo are:"+i);
+//								Debug.d("lo.x:"+lo[i].getX());
+//							}
+//							
+//							if(ko[i]!= null)
+//							{
+//								//BlockPositionCheck.akarMoPositionCheck(i,j);
+//								Debug.d("ko are:"+i);
+//								Debug.d("ko.x:"+ko[i].getX());
+//							}
+//							
+//							if(t[i]!= null)
+//							{
+//								//BlockPositionCheck.akarMoPositionCheck(i,j);
+//								Debug.d("t are:"+i);
+//								Debug.d("t.x:"+t[i].getX());
+//							}
+//							
+//							if(to[i]!= null)
+//							{
+//								//BlockPositionCheck.akarMoPositionCheck(i,j);
+//								Debug.d("to are:"+i);
+//								Debug.d("to.x:"+to[i].getX());
+//							}
+//							
+//							if(a[i]!= null)
+//							{
+//								//BlockPositionCheck.akarMoPositionCheck(i,j);
+//								Debug.d("a are:"+i);
+//								Debug.d("a.x:"+a[i].getX());
+////								for(int k=0; k<6; k++)
+////								{
+////									aVal[k] = i;
+////								}
+//							}
+//						}
+						
+//						for(int i=0; i<6; i++)
+//						{
+//							if(akar[i] != null)
+//							{
+//								for(int j=0;j<6;j++)
+//								{
+//									if(mo[j]!= null)
+//									{ 
+//										BlockPositionCheck.akarMoPositionCheck(j,i);
+//									}
+//								}
+//							}
+//							else
+//							{
+//								//Debug.d("null:"+i);
+//							}
+//						}
+						
+						//Checking if 'akar' & 'mo' position are close enough for merging
+//						if(BlockPositionCheck.positionValue == 1)
+//						{
+//							if (mo[BlockPositionCheck.moValue].getX() == akar[BlockPositionCheck.akarValue].getX() + 100)
+//							{
+//								//Calling the Scissor and checking for collision
+//								if (Scissor.collidesWith(akar[BlockPositionCheck.akarValue]) & Scissor.collidesWith(mo[BlockPositionCheck.moValue]))
+//								{
+//									count1++;
+//									Debug.d("Count1:" + count1);
+//									if (count1 == 1)
+//									{
+//										//All values are set to default
+//										MainActivity.mergeEnable1 = false;
+//										MainActivity.mergeEnable2 = false;
+//										BlockPositionCheck.positionValue = 0;
+//										Paths.splitPath();
+//									}
+//								}
+//	
+//							}
+//							// If letters are in the range but not merged, then
+//							// enable merging
+//							else
+//							{
+//								mergeEnable1 = true;
+//							}
+//						}
+//						
+//						//Checking if 'mo' & 'akar' position are close enough for merging
+//						else if(BlockPositionCheck.positionValue == 2)
+//						{
+//							if (mo[BlockPositionCheck.moValue].getX() + 100 == akar[BlockPositionCheck.akarValue].getX()) 
+//							{
+//									// Setting the maImage visible when the letters
+//									// are merged
+//									maImage.setVisible(true);
+//									
+//									//Calling the Scissor function and checking for collision
+//									if (Scissor.collidesWith(akar[BlockPositionCheck.akarValue]) && Scissor.collidesWith(mo[BlockPositionCheck.moValue]))
+//									{
+//										count2++;
+//										Debug.d("Count2:" + count2);
+//										if (count2 == 1) 
+//										{
+//											mergeEnable1 = false;
+//											mergeEnable2 = false;
+//											BlockPositionCheck.positionValue = 0;
+//											Paths.splitPath();
+//										}
+//									}
+//								}
+//								// If letters are in the range but not merged, then
+//								// enable merging
+//								else 
+//								{
+//									mergeEnable2 = true;
+//								}
+//						}
+//						else
+//						{
+//							// Setting the maImage invisible when the letters
+//							// are not merged
+//							maImage.setVisible(false);
+//						}
+						
+					}
+				});
+		mScene.registerUpdateHandler(mSceneHandler);
+		
 		Scissor = new Scissor(CAMERA_WIDTH - 80, CAMERA_HEIGHT - 80,
 				MainActivity.mS1TextureRegion, this.getVertexBufferObjectManager());
 		mScene.registerTouchArea(Scissor);
